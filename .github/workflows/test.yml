@@ -24,3 +24,9 @@ jobs:
           grep -q "Student 200 is added successfully" output.txt
           grep -A2 "All students:" output.txt | tr '\n' '|' | grep -q "Sara B 100|Ali A 200"
           grep -q "Leaving..." output.txt
+
+      - name: Same course in different case is rejected
+        run: |
+          printf '1\n100\nSara\nB\nF\ns@x\n3.5\n20\n3\n100\nitcs214\nData Structures\n3\n1\n3\n100\nITCS214\nData Structures\n3\n1\n11\n' | java -cp out Registration > output2.txt
+          cat output2.txt
+          grep -q "The course is already registered before!" output2.txt
