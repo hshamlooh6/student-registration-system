@@ -80,7 +80,7 @@ public class Roster {
             Student student = studentsList.get(index);
             int s = studentsList.get(index).getCoursesRegistered().size();
             for (int i = 0; i < s; i++)
-                if (student.getCoursesRegistered().get(i).getCourseNum().equals(course.getCourseNum())) {
+                if (student.getCoursesRegistered().get(i).getCourseNum().equalsIgnoreCase(course.getCourseNum())) {
                     System.out.println("The course is already registered before!");
                     return false;
                 }

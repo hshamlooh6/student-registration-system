@@ -52,8 +52,18 @@ public class Course {
         this.section = section;
     }
 
-    public boolean equals(Course obj) {
-        return this.courseNum.equalsIgnoreCase(obj.courseNum);
+    // two courses are the same if their course numbers match, ignoring case
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Course)) return false;
+        Course other = (Course) obj;
+        return courseNum.equalsIgnoreCase(other.courseNum);
+    }
+
+    @Override
+    public int hashCode() {
+        return courseNum.toLowerCase(Locale.ROOT).hashCode();
     }
 
     @Override

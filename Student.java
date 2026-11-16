@@ -91,8 +91,17 @@ public class Student {
         this.advisorNum = advisorNum;
     }
 
-    public boolean equals(Student obj) {
-        return (this.idNum == obj.idNum);
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Student)) return false;
+        Student other = (Student) obj;
+        return idNum == other.idNum;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idNum);
     }
 
     public void printCoursesRegistered() {
